@@ -17,7 +17,8 @@ opt-level = 's'     # Optimize for size.
 lto = true          # Enable Link Time Optimization.
 codegen-units = 1   # Reduce number of codegen units to increase optimizations.
 panic = 'abort'     # Abort on panic.
-strip = "debuginfo" # Strip debug info.
+#strip = "debuginfo" # Strip debug info.
+strip = "none" # Strip debug info.
 
 [lib]
 crate-type = ["cdylib", "lib"]
