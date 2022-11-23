@@ -3,27 +3,33 @@
 set -x
 set -e
 
+#test_runner="test"
+#cargo help nextest 2>/dev/null >&2 || \
+#    test_runner="nextest run"
+
+test_runner=$TEST_RUNNER
+
 cd "$(dirname "$0")"
 
 echo "Testing with std..."
-(cd sbor; cargo test)
-(cd sbor-derive; cargo test)
-(cd sbor-tests; cargo test)
-(cd scrypto; cargo test)
-(cd scrypto; cargo test --release)
-(cd scrypto-derive; cargo test)
-(cd scrypto-tests; cargo test)
-(cd radix-engine; cargo test)
-(cd radix-engine; cargo test --features wasmer)
-(cd transaction; cargo test)
+(cd sbor; cargo $test_runner)
+(cd sbor-derive; cargo $test_runner)
+(cd sbor-tests; cargo $test_runner)
+(cd scrypto; cargo $test_runner)
+(cd scrypto; cargo $test_runner --release)
+(cd scrypto-derive; cargo $test_runner)
+(cd scrypto-tests; cargo $test_runner)
+(cd radix-engine; cargo $test_runner)
+(cd radix-engine; cargo $test_runner --features wasmer)
+(cd transaction; cargo $test_runner)
 
 echo "Testing with no_std..."
-(cd sbor; cargo test --no-default-features --features alloc)
-(cd sbor-tests; cargo test --no-default-features --features alloc)
-(cd scrypto; cargo test --no-default-features --features alloc,prelude)
-(cd scrypto; cargo test --no-default-features --features alloc,prelude --release)
-(cd scrypto-abi; cargo test --no-default-features --features alloc)
-(cd scrypto-tests; cargo test --no-default-features --features alloc)
+(cd sbor; cargo $test_runner --no-default-features --features alloc)
+(cd sbor-tests; cargo $test_runner --no-default-features --features alloc)
+(cd scrypto; cargo $test_runner --no-default-features --features alloc,prelude)
+(cd scrypto; cargo $test_runner --no-default-features --features alloc,prelude --release)
+(cd scrypto-abi; cargo $test_runner --no-default-features --features alloc)
+(cd scrypto-tests; cargo $test_runner --no-default-features --features alloc)
 
 echo "Building system packages and examples..."
 (cd assets/blueprints/account; scrypto test)
