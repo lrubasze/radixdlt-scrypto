@@ -128,7 +128,8 @@ def parse_scenario(scenario):
             options = {}
 
         if line.startswith("# name="):
-            steps.append(line.removeprefix("# name=").strip(" "))
+            line = line[len("# name="):]
+            steps.append(line.strip(" "))
 
         elif line.startswith("# variants"):
             # convert line to list of variants
@@ -138,7 +139,9 @@ def parse_scenario(scenario):
             #   should be converted to
             #   [ ['var1=opt1', 'var1=opt2'], ['var2=opt3', 'var2=opt4']]
 
-            items = line.removeprefix("# variants").strip(" ").split(";")
+            line = line[len("# variants"):]
+
+            items = line.strip(" ").split(";")
             for i in items:
                 k = i.split("=")[0]
                 v = i.split("=")[1].split(",")
@@ -157,7 +160,8 @@ def parse_scenario(scenario):
             #   # options opt1=val1;opt2=val2
             #   should be converted to
             #   { 'opt1' : 'val1', 'opt2' : 'val2'}
-            items = line.removeprefix("# options").strip(" ").split(";")
+            line = line[len("# options"):]
+            items = line.strip(" ").split(";")
             for i in items:
                 option, value = i.split("=")
                 options[option] = value
