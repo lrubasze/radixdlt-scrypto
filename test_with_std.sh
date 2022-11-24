@@ -3,6 +3,11 @@
 set -x
 set -e
 
+sourced=0
+if [ "$0" != "$BASH_SOURCE" ]; then
+    sourced=1
+fi
+
 source setup_test.sh
 
 test_workspace_no () {
@@ -13,7 +18,7 @@ test_workspace_no () {
     (cd scrypto-derive; cargo $cargo_cmd $cmd_args)
     (cd scrypto-tests; cargo $cargo_cmd $cmd_args)
     (cd radix-engine; cargo $cargo_cmd $cmd_args)
-    (cd transaction; cargo)
+    (cd transaction; cargo $cargo_cmd $cmd_args)
     (cd scrypto; cargo $cargo_cmd $cmd_args --release)
     (cd radix-engine; cargo $cargo_cmd $cmd_args --features wasmer)
 }
@@ -47,4 +52,6 @@ test_workspace_all_in_one() {
         -p radix-engine --features wasmer
 }
 
-$test_cmd
+if [[ $sourced -eq 0 ]] ; then
+    $test_cmd
+fi

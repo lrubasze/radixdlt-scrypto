@@ -3,6 +3,11 @@
 set -x
 set -e
 
+sourced=0
+if [ "$0" != "$BASH_SOURCE" ]; then
+    sourced=1
+fi
+
 source setup_test.sh
 
 test_workspace_no () {
@@ -36,4 +41,6 @@ test_workspace_all_in_one() {
         -p scrypto  --no-default-features --features alloc,prelude --release
 }
 
-$test_cmd
+if [[ $sourced -eq 0 ]] ; then
+    $test_cmd
+fi
