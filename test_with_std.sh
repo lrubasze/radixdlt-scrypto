@@ -3,16 +3,7 @@
 set -x
 set -e
 
-rustc_wrapper="${1:-none}"
-cargo_cmd="${2:-test}"
-cmd_args="${3:-}"
-test_cmd=${4:-test_workspace_no}
-
-if [ "$rustc_wrapper" != "none" ] ; then
-    export RUSTC_WRAPPER=$rustc_wrapper
-else
-    unset RUSTC_WRAPPER
-fi
+source setup_test.sh
 
 test_workspace_no () {
     (cd sbor; cargo $cargo_cmd $cmd_args)
