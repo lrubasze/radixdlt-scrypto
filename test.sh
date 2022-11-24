@@ -3,11 +3,9 @@
 set -x
 set -e
 
-#test_runner="test"
-#cargo help nextest 2>/dev/null >&2 || \
-#    test_runner="nextest run"
-
-test_runner=$TEST_RUNNER
+test_runner="test"
+cargo help nextest 2>/dev/null >&2 || \
+    test_runner="nextest run"
 
 cd "$(dirname "$0")"
 
@@ -30,6 +28,7 @@ echo "Testing with no_std..."
 (cd scrypto; cargo $test_runner --no-default-features --features alloc,prelude --release)
 (cd scrypto-abi; cargo $test_runner --no-default-features --features alloc)
 (cd scrypto-tests; cargo $test_runner --no-default-features --features alloc)
+
 
 echo "Building system packages and examples..."
 (cd assets/blueprints/account; scrypto test)
