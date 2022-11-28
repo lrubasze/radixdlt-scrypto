@@ -1,0 +1,41 @@
+[2022-11-25 11:06:10,070] [INFO ] [process_scenario              ] 
+[2022-11-25 11:06:10,070] [INFO ] [parse_scenario                ] variants=[['\'rustc_wrapper="none"\'', '\'rustc_wrapper="sccache"\''], ['\'cargo_cmd="test"\''], ['\'test_cmd="test_workspace_sequential"\'', '\'test_cmd="test_workspace_all_in_one"\'']] commands=['./test_with_std.sh'] steps=['Testing with std.. build, run (cargo test)'] options={'clean_before': 'true'}
+[2022-11-25 11:06:10,071] [INFO ] [parse_scenario                ] variants=[['\'rustc_wrapper="none"\'', '\'rustc_wrapper="sccache"\''], ['\'cargo_cmd="test"\''], ['\'test_cmd="test_workspace_sequential"\'', '\'test_cmd="test_workspace_all_in_one"\'']] commands=['./test_with_no_std.sh'] steps=['Testing with no_std.. build, run (cargo test)'] options={'clean_before': 'true'}
+[2022-11-25 11:06:10,071] [INFO ] [parse_scenario                ] 2 sections found
+[2022-11-25 11:06:10,071] [INFO ] [execute_scenario              ] len(sections)=2 run_count=1
+[2022-11-25 11:06:10,071] [INFO ] [execute_scenario              ] ## iteration 1/1 section 1/2 
+[2022-11-25 11:06:10,071] [INFO ] [execute_scenario_section      ] len(variants)=3 len(commands)=1 len(steps)=1 options={'clean_before': 'true'}
+[2022-11-25 11:06:10,071] [INFO ] [execute_scenario_section      ] ### iteration 1/1 step='Testing with std.. build, run (cargo test)' cmd='./test_with_std.sh \'rustc_wrapper="none"\' \'cargo_cmd="test"\' \'test_cmd="test_workspace_sequential"\''
+[2022-11-25 11:06:10,071] [INFO ] [exec_cmd                      ] cmd:'./clean.sh'
+[2022-11-25 11:06:16,232] [INFO ] [exec_cmd                      ] cmd:'./test_with_std.sh 'rustc_wrapper="none"' 'cargo_cmd="test"' 'test_cmd="test_workspace_sequential"''
+[2022-11-25 11:18:29,698] [INFO ] [exec_cmd                      ] cmd:'./test_with_std.sh 'rustc_wrapper="none"' 'cargo_cmd="test"' 'test_cmd="test_workspace_sequential"'' duration:733.466s
+[2022-11-25 11:18:29,698] [INFO ] [execute_scenario_section      ] ### iteration 1/1 step='Testing with std.. build, run (cargo test)' cmd='./test_with_std.sh \'rustc_wrapper="none"\' \'cargo_cmd="test"\' \'test_cmd="test_workspace_all_in_one"\''
+[2022-11-25 11:18:29,698] [INFO ] [exec_cmd                      ] cmd:'./clean.sh'
+[2022-11-25 11:18:34,762] [INFO ] [exec_cmd                      ] cmd:'./test_with_std.sh 'rustc_wrapper="none"' 'cargo_cmd="test"' 'test_cmd="test_workspace_all_in_one"''
+[2022-11-25 11:30:10,223] [INFO ] [exec_cmd                      ] cmd:'./test_with_std.sh 'rustc_wrapper="none"' 'cargo_cmd="test"' 'test_cmd="test_workspace_all_in_one"'' duration:695.462s
+[2022-11-25 11:30:10,224] [INFO ] [execute_scenario_section      ] ### iteration 1/1 step='Testing with std.. build, run (cargo test)' cmd='./test_with_std.sh \'rustc_wrapper="sccache"\' \'cargo_cmd="test"\' \'test_cmd="test_workspace_sequential"\''
+[2022-11-25 11:30:10,224] [INFO ] [exec_cmd                      ] cmd:'./clean.sh'
+[2022-11-25 11:30:15,112] [INFO ] [exec_cmd                      ] cmd:'./test_with_std.sh 'rustc_wrapper="sccache"' 'cargo_cmd="test"' 'test_cmd="test_workspace_sequential"''
+[2022-11-25 11:42:00,239] [INFO ] [exec_cmd                      ] cmd:'./test_with_std.sh 'rustc_wrapper="sccache"' 'cargo_cmd="test"' 'test_cmd="test_workspace_sequential"'' duration:705.127s
+[2022-11-25 11:42:00,239] [INFO ] [execute_scenario_section      ] ### iteration 1/1 step='Testing with std.. build, run (cargo test)' cmd='./test_with_std.sh \'rustc_wrapper="sccache"\' \'cargo_cmd="test"\' \'test_cmd="test_workspace_all_in_one"\''
+[2022-11-25 11:42:00,239] [INFO ] [exec_cmd                      ] cmd:'./clean.sh'
+[2022-11-25 11:42:05,458] [INFO ] [exec_cmd                      ] cmd:'./test_with_std.sh 'rustc_wrapper="sccache"' 'cargo_cmd="test"' 'test_cmd="test_workspace_all_in_one"''
+[2022-11-25 11:53:30,118] [INFO ] [exec_cmd                      ] cmd:'./test_with_std.sh 'rustc_wrapper="sccache"' 'cargo_cmd="test"' 'test_cmd="test_workspace_all_in_one"'' duration:684.66s
+[2022-11-25 11:53:30,118] [INFO ] [execute_scenario              ] ## iteration 1/1 section 2/2 
+[2022-11-25 11:53:30,118] [INFO ] [execute_scenario_section      ] len(variants)=3 len(commands)=1 len(steps)=1 options={'clean_before': 'true'}
+[2022-11-25 11:53:30,118] [INFO ] [execute_scenario_section      ] ### iteration 1/1 step='Testing with no_std.. build, run (cargo test)' cmd='./test_with_no_std.sh \'rustc_wrapper="none"\' \'cargo_cmd="test"\' \'test_cmd="test_workspace_sequential"\''
+[2022-11-25 11:53:30,118] [INFO ] [exec_cmd                      ] cmd:'./clean.sh'
+[2022-11-25 11:53:34,934] [INFO ] [exec_cmd                      ] cmd:'./test_with_no_std.sh 'rustc_wrapper="none"' 'cargo_cmd="test"' 'test_cmd="test_workspace_sequential"''
+[2022-11-25 11:54:20,763] [INFO ] [exec_cmd                      ] cmd:'./test_with_no_std.sh 'rustc_wrapper="none"' 'cargo_cmd="test"' 'test_cmd="test_workspace_sequential"'' duration:45.829s
+[2022-11-25 11:54:20,764] [INFO ] [execute_scenario_section      ] ### iteration 1/1 step='Testing with no_std.. build, run (cargo test)' cmd='./test_with_no_std.sh \'rustc_wrapper="none"\' \'cargo_cmd="test"\' \'test_cmd="test_workspace_all_in_one"\''
+[2022-11-25 11:54:20,764] [INFO ] [exec_cmd                      ] cmd:'./clean.sh'
+[2022-11-25 11:54:22,250] [INFO ] [exec_cmd                      ] cmd:'./test_with_no_std.sh 'rustc_wrapper="none"' 'cargo_cmd="test"' 'test_cmd="test_workspace_all_in_one"''
+[2022-11-25 11:55:06,906] [INFO ] [exec_cmd                      ] cmd:'./test_with_no_std.sh 'rustc_wrapper="none"' 'cargo_cmd="test"' 'test_cmd="test_workspace_all_in_one"'' duration:44.656s
+[2022-11-25 11:55:06,906] [INFO ] [execute_scenario_section      ] ### iteration 1/1 step='Testing with no_std.. build, run (cargo test)' cmd='./test_with_no_std.sh \'rustc_wrapper="sccache"\' \'cargo_cmd="test"\' \'test_cmd="test_workspace_sequential"\''
+[2022-11-25 11:55:06,906] [INFO ] [exec_cmd                      ] cmd:'./clean.sh'
+[2022-11-25 11:55:08,432] [INFO ] [exec_cmd                      ] cmd:'./test_with_no_std.sh 'rustc_wrapper="sccache"' 'cargo_cmd="test"' 'test_cmd="test_workspace_sequential"''
+[2022-11-25 11:55:36,505] [INFO ] [exec_cmd                      ] cmd:'./test_with_no_std.sh 'rustc_wrapper="sccache"' 'cargo_cmd="test"' 'test_cmd="test_workspace_sequential"'' duration:28.073s
+[2022-11-25 11:55:36,505] [INFO ] [execute_scenario_section      ] ### iteration 1/1 step='Testing with no_std.. build, run (cargo test)' cmd='./test_with_no_std.sh \'rustc_wrapper="sccache"\' \'cargo_cmd="test"\' \'test_cmd="test_workspace_all_in_one"\''
+[2022-11-25 11:55:36,505] [INFO ] [exec_cmd                      ] cmd:'./clean.sh'
+[2022-11-25 11:55:38,046] [INFO ] [exec_cmd                      ] cmd:'./test_with_no_std.sh 'rustc_wrapper="sccache"' 'cargo_cmd="test"' 'test_cmd="test_workspace_all_in_one"''
+[2022-11-25 11:56:08,076] [INFO ] [exec_cmd                      ] cmd:'./test_with_no_std.sh 'rustc_wrapper="sccache"' 'cargo_cmd="test"' 'test_cmd="test_workspace_all_in_one"'' duration:30.03s

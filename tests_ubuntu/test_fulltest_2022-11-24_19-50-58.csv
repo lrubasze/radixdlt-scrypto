@@ -1,0 +1,3 @@
+Test                                                        	command                                                               	  run 1	  average	  median
+Fulltest;'rustc_wrapper="sccache"';'cargo_cmd="test"'       	./test_fulltest.sh 'rustc_wrapper="sccache"' 'cargo_cmd="test"'       	2110.93	  2110.93	 2110.93
+Fulltest;'rustc_wrapper="sccache"';'cargo_cmd="nextest run"'	./test_fulltest.sh 'rustc_wrapper="sccache"' 'cargo_cmd="nextest run"'	1938.08	  1938.08	 1938.08

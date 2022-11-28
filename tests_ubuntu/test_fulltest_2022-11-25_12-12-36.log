@@ -1,0 +1,14 @@
+[2022-11-25 12:12:36,523] [INFO ] [process_scenario              ] 
+[2022-11-25 12:12:36,523] [INFO ] [parse_scenario                ] variants=[['\'rustc_wrapper="sccache"\''], ['\'cargo_cmd="nextest run"\''], ['\'test_cmd="test_workspace_sequential"\'', '\'test_cmd="test_workspace_all_in_one"\'']] commands=['./test_fulltest.sh'] steps=['Fulltest'] options={'clean_before': 'true'}
+[2022-11-25 12:12:36,523] [INFO ] [parse_scenario                ] 1 sections found
+[2022-11-25 12:12:36,523] [INFO ] [execute_scenario              ] len(sections)=1 run_count=1
+[2022-11-25 12:12:36,523] [INFO ] [execute_scenario              ] ## iteration 1/1 section 1/1 
+[2022-11-25 12:12:36,524] [INFO ] [execute_scenario_section      ] len(variants)=3 len(commands)=1 len(steps)=1 options={'clean_before': 'true'}
+[2022-11-25 12:12:36,524] [INFO ] [execute_scenario_section      ] ### iteration 1/1 step='Fulltest' cmd='./test_fulltest.sh \'rustc_wrapper="sccache"\' \'cargo_cmd="nextest run"\' \'test_cmd="test_workspace_sequential"\''
+[2022-11-25 12:12:36,524] [INFO ] [exec_cmd                      ] cmd:'./clean.sh'
+[2022-11-25 12:12:40,554] [INFO ] [exec_cmd                      ] cmd:'./test_fulltest.sh 'rustc_wrapper="sccache"' 'cargo_cmd="nextest run"' 'test_cmd="test_workspace_sequential"''
+[2022-11-25 12:44:33,238] [INFO ] [exec_cmd                      ] cmd:'./test_fulltest.sh 'rustc_wrapper="sccache"' 'cargo_cmd="nextest run"' 'test_cmd="test_workspace_sequential"'' duration:1912.677s
+[2022-11-25 12:44:33,246] [INFO ] [execute_scenario_section      ] ### iteration 1/1 step='Fulltest' cmd='./test_fulltest.sh \'rustc_wrapper="sccache"\' \'cargo_cmd="nextest run"\' \'test_cmd="test_workspace_all_in_one"\''
+[2022-11-25 12:44:33,247] [INFO ] [exec_cmd                      ] cmd:'./clean.sh'
+[2022-11-25 12:44:37,891] [INFO ] [exec_cmd                      ] cmd:'./test_fulltest.sh 'rustc_wrapper="sccache"' 'cargo_cmd="nextest run"' 'test_cmd="test_workspace_all_in_one"''
+[2022-11-25 13:16:01,236] [INFO ] [exec_cmd                      ] cmd:'./test_fulltest.sh 'rustc_wrapper="sccache"' 'cargo_cmd="nextest run"' 'test_cmd="test_workspace_all_in_one"'' duration:1883.34s

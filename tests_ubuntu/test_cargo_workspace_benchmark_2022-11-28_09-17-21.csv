@@ -1,0 +1,7 @@
+Test                                                                              	command                                                                             	  run 1	  average	  median
+Testing benchmark;'rustc_wrapper="none"';'test_cmd="test_workspace_no"'           	./test_benchmark.sh 'rustc_wrapper="none"' 'test_cmd="test_workspace_no"'           	273.067	  273.067	 273.067
+Testing benchmark;'rustc_wrapper="none"';'test_cmd="test_workspace_sequential"'   	./test_benchmark.sh 'rustc_wrapper="none"' 'test_cmd="test_workspace_sequential"'   	277.658	  277.658	 277.658
+Testing benchmark;'rustc_wrapper="none"';'test_cmd="test_workspace_all_in_one"'   	./test_benchmark.sh 'rustc_wrapper="none"' 'test_cmd="test_workspace_all_in_one"'   	267.343	  267.343	 267.343
+Testing benchmark;'rustc_wrapper="sccache"';'test_cmd="test_workspace_no"'        	./test_benchmark.sh 'rustc_wrapper="sccache"' 'test_cmd="test_workspace_no"'        	196.781	  196.781	 196.781
+Testing benchmark;'rustc_wrapper="sccache"';'test_cmd="test_workspace_sequential"'	./test_benchmark.sh 'rustc_wrapper="sccache"' 'test_cmd="test_workspace_sequential"'	208.289	  208.289	 208.289
+Testing benchmark;'rustc_wrapper="sccache"';'test_cmd="test_workspace_all_in_one"'	./test_benchmark.sh 'rustc_wrapper="sccache"' 'test_cmd="test_workspace_all_in_one"'	199.891	  199.891	 199.891

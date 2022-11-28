@@ -1,0 +1,15 @@
+Test                                                                                      	command                                                                                 	  run 1	  average	  median
+Building system packages and examples...;'rustc_wrapper="none"'                           	./test_packages.sh 'rustc_wrapper="none"'                                               	194.622	  194.622	 194.622
+Running simulator...;'rustc_wrapper="none"'                                               	./test_simulator.sh 'rustc_wrapper="none"'                                              	305.749	  305.749	 305.749
+Running benchmark...;'rustc_wrapper="none"'                                               	./test_benchmark.sh 'rustc_wrapper="none"'                                              	164.489	  164.489	 164.489
+Building system packages and examples...;'rustc_wrapper="sccache"'                        	./test_packages.sh 'rustc_wrapper="sccache"'                                            	118.325	  118.325	 118.325
+Running simulator...;'rustc_wrapper="sccache"'                                            	./test_simulator.sh 'rustc_wrapper="sccache"'                                           	230.078	  230.078	 230.078
+Running benchmark...;'rustc_wrapper="sccache"'                                            	./test_benchmark.sh 'rustc_wrapper="sccache"'                                           	138.453	  138.453	 138.453
+Testing with std.. (no-run);'rustc_wrapper="none"';'cargo_cmd="test"'                     	./test_with_std.sh cmd_args=--no-run 'rustc_wrapper="none"' 'cargo_cmd="test"'          	119.528	  119.528	 119.528
+Testing with std.. (run already built);'rustc_wrapper="none"';'cargo_cmd="test"'          	./test_with_std.sh 'rustc_wrapper="none"' 'cargo_cmd="test"'                            	709.499	  709.499	 709.499
+Testing with std.. (no-run);'rustc_wrapper="none"';'cargo_cmd="nextest run"'              	./test_with_std.sh cmd_args=--no-run 'rustc_wrapper="none"' 'cargo_cmd="nextest run"'   	155.465	  155.465	 155.465
+Testing with std.. (run already built);'rustc_wrapper="none"';'cargo_cmd="nextest run"'   	./test_with_std.sh 'rustc_wrapper="none"' 'cargo_cmd="nextest run"'                     	458.807	  458.807	 458.807
+Testing with std.. (no-run);'rustc_wrapper="sccache"';'cargo_cmd="test"'                  	./test_with_std.sh cmd_args=--no-run 'rustc_wrapper="sccache"' 'cargo_cmd="test"'       	 99.268	   99.268	  99.268
+Testing with std.. (run already built);'rustc_wrapper="sccache"';'cargo_cmd="test"'       	./test_with_std.sh 'rustc_wrapper="sccache"' 'cargo_cmd="test"'                         	677.904	  677.904	 677.904
+Testing with std.. (no-run);'rustc_wrapper="sccache"';'cargo_cmd="nextest run"'           	./test_with_std.sh cmd_args=--no-run 'rustc_wrapper="sccache"' 'cargo_cmd="nextest run"'	137.476	  137.476	 137.476
+Testing with std.. (run already built);'rustc_wrapper="sccache"';'cargo_cmd="nextest run"'	./test_with_std.sh 'rustc_wrapper="sccache"' 'cargo_cmd="nextest run"'                  	431.342	  431.342	 431.342

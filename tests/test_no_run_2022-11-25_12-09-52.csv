@@ -1,0 +1,5 @@
+Test                                                                           	command                                                                                 	  run 1	  average	  median
+Testing with std.. (no-run);'rustc_wrapper="none"';'cargo_cmd="test"'          	./test_with_std.sh cmd_args=--no-run 'rustc_wrapper="none"' 'cargo_cmd="test"'          	125.508	  125.508	 125.508
+Testing with std.. (no-run);'rustc_wrapper="none"';'cargo_cmd="nextest run"'   	./test_with_std.sh cmd_args=--no-run 'rustc_wrapper="none"' 'cargo_cmd="nextest run"'   	157.111	  157.111	 157.111
+Testing with std.. (no-run);'rustc_wrapper="sccache"';'cargo_cmd="test"'       	./test_with_std.sh cmd_args=--no-run 'rustc_wrapper="sccache"' 'cargo_cmd="test"'       	 97.414	   97.414	  97.414
+Testing with std.. (no-run);'rustc_wrapper="sccache"';'cargo_cmd="nextest run"'	./test_with_std.sh cmd_args=--no-run 'rustc_wrapper="sccache"' 'cargo_cmd="nextest run"'	130.09 	  130.09 	 130.09

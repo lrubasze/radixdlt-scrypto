@@ -1,0 +1,7 @@
+Test                                                                              	command                                                                             	  run 1	  run 2	  run 3	  run 4	  average	  median
+Testing benchmark;'rustc_wrapper="none"';'test_cmd="test_workspace_no"'           	./test_benchmark.sh 'rustc_wrapper="none"' 'test_cmd="test_workspace_no"'           	156.755	163.425	161.181	164.766	  161.532	 162.303
+Testing benchmark;'rustc_wrapper="none"';'test_cmd="test_workspace_sequential"'   	./test_benchmark.sh 'rustc_wrapper="none"' 'test_cmd="test_workspace_sequential"'   	149.907	162.189	159.539	153.347	  156.245	 156.443
+Testing benchmark;'rustc_wrapper="none"';'test_cmd="test_workspace_all_in_one"'   	./test_benchmark.sh 'rustc_wrapper="none"' 'test_cmd="test_workspace_all_in_one"'   	149.466	161.707	150.012	158.566	  154.938	 154.289
+Testing benchmark;'rustc_wrapper="sccache"';'test_cmd="test_workspace_no"'        	./test_benchmark.sh 'rustc_wrapper="sccache"' 'test_cmd="test_workspace_no"'        	134.206	138.763	139.598	135.364	  136.983	 137.064
+Testing benchmark;'rustc_wrapper="sccache"';'test_cmd="test_workspace_sequential"'	./test_benchmark.sh 'rustc_wrapper="sccache"' 'test_cmd="test_workspace_sequential"'	126.482	143.231	139.758	146.619	  139.023	 141.495
+Testing benchmark;'rustc_wrapper="sccache"';'test_cmd="test_workspace_all_in_one"'	./test_benchmark.sh 'rustc_wrapper="sccache"' 'test_cmd="test_workspace_all_in_one"'	130.121	141.592	131.535	134.431	  134.42 	 132.983

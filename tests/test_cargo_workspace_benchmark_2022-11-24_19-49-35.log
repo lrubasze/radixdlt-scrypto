@@ -1,0 +1,108 @@
+[2022-11-24 19:49:35,072] [INFO ] [process_scenario              ] 
+[2022-11-24 19:49:35,072] [INFO ] [parse_scenario                ] variants=[['\'rustc_wrapper="none"\'', '\'rustc_wrapper="sccache"\''], ['\'test_cmd="test_workspace_no"\'', '\'test_cmd="test_workspace_sequential"\'', '\'test_cmd="test_workspace_all_in_one"\'']] commands=['./test_benchmark.sh'] steps=['Testing benchmark'] options={'clean_before': 'true'}
+[2022-11-24 19:49:35,072] [INFO ] [parse_scenario                ] 1 sections found
+[2022-11-24 19:49:35,072] [INFO ] [execute_scenario              ] len(sections)=1 run_count=4
+[2022-11-24 19:49:35,072] [INFO ] [execute_scenario              ] ## iteration 1/4 section 1/1 
+[2022-11-24 19:49:35,072] [INFO ] [execute_scenario_section      ] len(variants)=2 len(commands)=1 len(steps)=1 options={'clean_before': 'true'}
+[2022-11-24 19:49:35,072] [INFO ] [execute_scenario_section      ] ### iteration 1/1 step='Testing benchmark' cmd='./test_benchmark.sh \'rustc_wrapper="none"\' \'test_cmd="test_workspace_no"\''
+[2022-11-24 19:49:35,072] [INFO ] [exec_cmd                      ] cmd:'./clean.sh'
+[2022-11-24 19:49:36,605] [INFO ] [exec_cmd                      ] cmd:'./test_benchmark.sh 'rustc_wrapper="none"' 'test_cmd="test_workspace_no"''
+[2022-11-24 19:52:13,360] [INFO ] [exec_cmd                      ] cmd:'./test_benchmark.sh 'rustc_wrapper="none"' 'test_cmd="test_workspace_no"'' duration:156.755s
+[2022-11-24 19:52:13,360] [INFO ] [execute_scenario_section      ] ### iteration 1/1 step='Testing benchmark' cmd='./test_benchmark.sh \'rustc_wrapper="none"\' \'test_cmd="test_workspace_sequential"\''
+[2022-11-24 19:52:13,360] [INFO ] [exec_cmd                      ] cmd:'./clean.sh'
+[2022-11-24 19:52:14,673] [INFO ] [exec_cmd                      ] cmd:'./test_benchmark.sh 'rustc_wrapper="none"' 'test_cmd="test_workspace_sequential"''
+[2022-11-24 19:54:44,579] [INFO ] [exec_cmd                      ] cmd:'./test_benchmark.sh 'rustc_wrapper="none"' 'test_cmd="test_workspace_sequential"'' duration:149.907s
+[2022-11-24 19:54:44,580] [INFO ] [execute_scenario_section      ] ### iteration 1/1 step='Testing benchmark' cmd='./test_benchmark.sh \'rustc_wrapper="none"\' \'test_cmd="test_workspace_all_in_one"\''
+[2022-11-24 19:54:44,580] [INFO ] [exec_cmd                      ] cmd:'./clean.sh'
+[2022-11-24 19:54:45,765] [INFO ] [exec_cmd                      ] cmd:'./test_benchmark.sh 'rustc_wrapper="none"' 'test_cmd="test_workspace_all_in_one"''
+[2022-11-24 19:57:15,231] [INFO ] [exec_cmd                      ] cmd:'./test_benchmark.sh 'rustc_wrapper="none"' 'test_cmd="test_workspace_all_in_one"'' duration:149.466s
+[2022-11-24 19:57:15,231] [INFO ] [execute_scenario_section      ] ### iteration 1/1 step='Testing benchmark' cmd='./test_benchmark.sh \'rustc_wrapper="sccache"\' \'test_cmd="test_workspace_no"\''
+[2022-11-24 19:57:15,231] [INFO ] [exec_cmd                      ] cmd:'./clean.sh'
+[2022-11-24 19:57:16,397] [INFO ] [exec_cmd                      ] cmd:'./test_benchmark.sh 'rustc_wrapper="sccache"' 'test_cmd="test_workspace_no"''
+[2022-11-24 19:59:30,604] [INFO ] [exec_cmd                      ] cmd:'./test_benchmark.sh 'rustc_wrapper="sccache"' 'test_cmd="test_workspace_no"'' duration:134.206s
+[2022-11-24 19:59:30,604] [INFO ] [execute_scenario_section      ] ### iteration 1/1 step='Testing benchmark' cmd='./test_benchmark.sh \'rustc_wrapper="sccache"\' \'test_cmd="test_workspace_sequential"\''
+[2022-11-24 19:59:30,604] [INFO ] [exec_cmd                      ] cmd:'./clean.sh'
+[2022-11-24 19:59:32,026] [INFO ] [exec_cmd                      ] cmd:'./test_benchmark.sh 'rustc_wrapper="sccache"' 'test_cmd="test_workspace_sequential"''
+[2022-11-24 20:01:38,508] [INFO ] [exec_cmd                      ] cmd:'./test_benchmark.sh 'rustc_wrapper="sccache"' 'test_cmd="test_workspace_sequential"'' duration:126.482s
+[2022-11-24 20:01:38,509] [INFO ] [execute_scenario_section      ] ### iteration 1/1 step='Testing benchmark' cmd='./test_benchmark.sh \'rustc_wrapper="sccache"\' \'test_cmd="test_workspace_all_in_one"\''
+[2022-11-24 20:01:38,509] [INFO ] [exec_cmd                      ] cmd:'./clean.sh'
+[2022-11-24 20:01:39,816] [INFO ] [exec_cmd                      ] cmd:'./test_benchmark.sh 'rustc_wrapper="sccache"' 'test_cmd="test_workspace_all_in_one"''
+[2022-11-24 20:03:49,937] [INFO ] [exec_cmd                      ] cmd:'./test_benchmark.sh 'rustc_wrapper="sccache"' 'test_cmd="test_workspace_all_in_one"'' duration:130.121s
+[2022-11-24 20:03:49,937] [INFO ] [execute_scenario              ] ## iteration 2/4 section 1/1 
+[2022-11-24 20:03:49,937] [INFO ] [execute_scenario_section      ] len(variants)=2 len(commands)=1 len(steps)=1 options={'clean_before': 'true'}
+[2022-11-24 20:03:49,937] [INFO ] [execute_scenario_section      ] ### iteration 1/1 step='Testing benchmark' cmd='./test_benchmark.sh \'rustc_wrapper="none"\' \'test_cmd="test_workspace_no"\''
+[2022-11-24 20:03:49,937] [INFO ] [exec_cmd                      ] cmd:'./clean.sh'
+[2022-11-24 20:03:51,190] [INFO ] [exec_cmd                      ] cmd:'./test_benchmark.sh 'rustc_wrapper="none"' 'test_cmd="test_workspace_no"''
+[2022-11-24 20:06:34,616] [INFO ] [exec_cmd                      ] cmd:'./test_benchmark.sh 'rustc_wrapper="none"' 'test_cmd="test_workspace_no"'' duration:163.425s
+[2022-11-24 20:06:34,616] [INFO ] [execute_scenario_section      ] ### iteration 1/1 step='Testing benchmark' cmd='./test_benchmark.sh \'rustc_wrapper="none"\' \'test_cmd="test_workspace_sequential"\''
+[2022-11-24 20:06:34,616] [INFO ] [exec_cmd                      ] cmd:'./clean.sh'
+[2022-11-24 20:06:35,851] [INFO ] [exec_cmd                      ] cmd:'./test_benchmark.sh 'rustc_wrapper="none"' 'test_cmd="test_workspace_sequential"''
+[2022-11-24 20:09:18,041] [INFO ] [exec_cmd                      ] cmd:'./test_benchmark.sh 'rustc_wrapper="none"' 'test_cmd="test_workspace_sequential"'' duration:162.189s
+[2022-11-24 20:09:18,041] [INFO ] [execute_scenario_section      ] ### iteration 1/1 step='Testing benchmark' cmd='./test_benchmark.sh \'rustc_wrapper="none"\' \'test_cmd="test_workspace_all_in_one"\''
+[2022-11-24 20:09:18,041] [INFO ] [exec_cmd                      ] cmd:'./clean.sh'
+[2022-11-24 20:09:19,284] [INFO ] [exec_cmd                      ] cmd:'./test_benchmark.sh 'rustc_wrapper="none"' 'test_cmd="test_workspace_all_in_one"''
+[2022-11-24 20:12:00,992] [INFO ] [exec_cmd                      ] cmd:'./test_benchmark.sh 'rustc_wrapper="none"' 'test_cmd="test_workspace_all_in_one"'' duration:161.707s
+[2022-11-24 20:12:00,992] [INFO ] [execute_scenario_section      ] ### iteration 1/1 step='Testing benchmark' cmd='./test_benchmark.sh \'rustc_wrapper="sccache"\' \'test_cmd="test_workspace_no"\''
+[2022-11-24 20:12:00,992] [INFO ] [exec_cmd                      ] cmd:'./clean.sh'
+[2022-11-24 20:12:02,217] [INFO ] [exec_cmd                      ] cmd:'./test_benchmark.sh 'rustc_wrapper="sccache"' 'test_cmd="test_workspace_no"''
+[2022-11-24 20:14:20,980] [INFO ] [exec_cmd                      ] cmd:'./test_benchmark.sh 'rustc_wrapper="sccache"' 'test_cmd="test_workspace_no"'' duration:138.763s
+[2022-11-24 20:14:20,980] [INFO ] [execute_scenario_section      ] ### iteration 1/1 step='Testing benchmark' cmd='./test_benchmark.sh \'rustc_wrapper="sccache"\' \'test_cmd="test_workspace_sequential"\''
+[2022-11-24 20:14:20,980] [INFO ] [exec_cmd                      ] cmd:'./clean.sh'
+[2022-11-24 20:14:22,250] [INFO ] [exec_cmd                      ] cmd:'./test_benchmark.sh 'rustc_wrapper="sccache"' 'test_cmd="test_workspace_sequential"''
+[2022-11-24 20:16:45,480] [INFO ] [exec_cmd                      ] cmd:'./test_benchmark.sh 'rustc_wrapper="sccache"' 'test_cmd="test_workspace_sequential"'' duration:143.231s
+[2022-11-24 20:16:45,480] [INFO ] [execute_scenario_section      ] ### iteration 1/1 step='Testing benchmark' cmd='./test_benchmark.sh \'rustc_wrapper="sccache"\' \'test_cmd="test_workspace_all_in_one"\''
+[2022-11-24 20:16:45,480] [INFO ] [exec_cmd                      ] cmd:'./clean.sh'
+[2022-11-24 20:16:46,742] [INFO ] [exec_cmd                      ] cmd:'./test_benchmark.sh 'rustc_wrapper="sccache"' 'test_cmd="test_workspace_all_in_one"''
+[2022-11-24 20:19:08,334] [INFO ] [exec_cmd                      ] cmd:'./test_benchmark.sh 'rustc_wrapper="sccache"' 'test_cmd="test_workspace_all_in_one"'' duration:141.592s
+[2022-11-24 20:19:08,334] [INFO ] [execute_scenario              ] ## iteration 3/4 section 1/1 
+[2022-11-24 20:19:08,334] [INFO ] [execute_scenario_section      ] len(variants)=2 len(commands)=1 len(steps)=1 options={'clean_before': 'true'}
+[2022-11-24 20:19:08,334] [INFO ] [execute_scenario_section      ] ### iteration 1/1 step='Testing benchmark' cmd='./test_benchmark.sh \'rustc_wrapper="none"\' \'test_cmd="test_workspace_no"\''
+[2022-11-24 20:19:08,334] [INFO ] [exec_cmd                      ] cmd:'./clean.sh'
+[2022-11-24 20:19:09,622] [INFO ] [exec_cmd                      ] cmd:'./test_benchmark.sh 'rustc_wrapper="none"' 'test_cmd="test_workspace_no"''
+[2022-11-24 20:21:50,804] [INFO ] [exec_cmd                      ] cmd:'./test_benchmark.sh 'rustc_wrapper="none"' 'test_cmd="test_workspace_no"'' duration:161.181s
+[2022-11-24 20:21:50,804] [INFO ] [execute_scenario_section      ] ### iteration 1/1 step='Testing benchmark' cmd='./test_benchmark.sh \'rustc_wrapper="none"\' \'test_cmd="test_workspace_sequential"\''
+[2022-11-24 20:21:50,804] [INFO ] [exec_cmd                      ] cmd:'./clean.sh'
+[2022-11-24 20:21:52,018] [INFO ] [exec_cmd                      ] cmd:'./test_benchmark.sh 'rustc_wrapper="none"' 'test_cmd="test_workspace_sequential"''
+[2022-11-24 20:24:31,557] [INFO ] [exec_cmd                      ] cmd:'./test_benchmark.sh 'rustc_wrapper="none"' 'test_cmd="test_workspace_sequential"'' duration:159.539s
+[2022-11-24 20:24:31,557] [INFO ] [execute_scenario_section      ] ### iteration 1/1 step='Testing benchmark' cmd='./test_benchmark.sh \'rustc_wrapper="none"\' \'test_cmd="test_workspace_all_in_one"\''
+[2022-11-24 20:24:31,557] [INFO ] [exec_cmd                      ] cmd:'./clean.sh'
+[2022-11-24 20:24:32,797] [INFO ] [exec_cmd                      ] cmd:'./test_benchmark.sh 'rustc_wrapper="none"' 'test_cmd="test_workspace_all_in_one"''
+[2022-11-24 20:27:02,809] [INFO ] [exec_cmd                      ] cmd:'./test_benchmark.sh 'rustc_wrapper="none"' 'test_cmd="test_workspace_all_in_one"'' duration:150.012s
+[2022-11-24 20:27:02,809] [INFO ] [execute_scenario_section      ] ### iteration 1/1 step='Testing benchmark' cmd='./test_benchmark.sh \'rustc_wrapper="sccache"\' \'test_cmd="test_workspace_no"\''
+[2022-11-24 20:27:02,809] [INFO ] [exec_cmd                      ] cmd:'./clean.sh'
+[2022-11-24 20:27:04,041] [INFO ] [exec_cmd                      ] cmd:'./test_benchmark.sh 'rustc_wrapper="sccache"' 'test_cmd="test_workspace_no"''
+[2022-11-24 20:29:23,639] [INFO ] [exec_cmd                      ] cmd:'./test_benchmark.sh 'rustc_wrapper="sccache"' 'test_cmd="test_workspace_no"'' duration:139.598s
+[2022-11-24 20:29:23,639] [INFO ] [execute_scenario_section      ] ### iteration 1/1 step='Testing benchmark' cmd='./test_benchmark.sh \'rustc_wrapper="sccache"\' \'test_cmd="test_workspace_sequential"\''
+[2022-11-24 20:29:23,639] [INFO ] [exec_cmd                      ] cmd:'./clean.sh'
+[2022-11-24 20:29:24,949] [INFO ] [exec_cmd                      ] cmd:'./test_benchmark.sh 'rustc_wrapper="sccache"' 'test_cmd="test_workspace_sequential"''
+[2022-11-24 20:31:44,707] [INFO ] [exec_cmd                      ] cmd:'./test_benchmark.sh 'rustc_wrapper="sccache"' 'test_cmd="test_workspace_sequential"'' duration:139.758s
+[2022-11-24 20:31:44,707] [INFO ] [execute_scenario_section      ] ### iteration 1/1 step='Testing benchmark' cmd='./test_benchmark.sh \'rustc_wrapper="sccache"\' \'test_cmd="test_workspace_all_in_one"\''
+[2022-11-24 20:31:44,707] [INFO ] [exec_cmd                      ] cmd:'./clean.sh'
+[2022-11-24 20:31:46,031] [INFO ] [exec_cmd                      ] cmd:'./test_benchmark.sh 'rustc_wrapper="sccache"' 'test_cmd="test_workspace_all_in_one"''
+[2022-11-24 20:33:57,566] [INFO ] [exec_cmd                      ] cmd:'./test_benchmark.sh 'rustc_wrapper="sccache"' 'test_cmd="test_workspace_all_in_one"'' duration:131.535s
+[2022-11-24 20:33:57,566] [INFO ] [execute_scenario              ] ## iteration 4/4 section 1/1 
+[2022-11-24 20:33:57,566] [INFO ] [execute_scenario_section      ] len(variants)=2 len(commands)=1 len(steps)=1 options={'clean_before': 'true'}
+[2022-11-24 20:33:57,566] [INFO ] [execute_scenario_section      ] ### iteration 1/1 step='Testing benchmark' cmd='./test_benchmark.sh \'rustc_wrapper="none"\' \'test_cmd="test_workspace_no"\''
+[2022-11-24 20:33:57,566] [INFO ] [exec_cmd                      ] cmd:'./clean.sh'
+[2022-11-24 20:33:58,847] [INFO ] [exec_cmd                      ] cmd:'./test_benchmark.sh 'rustc_wrapper="none"' 'test_cmd="test_workspace_no"''
+[2022-11-24 20:36:43,613] [INFO ] [exec_cmd                      ] cmd:'./test_benchmark.sh 'rustc_wrapper="none"' 'test_cmd="test_workspace_no"'' duration:164.766s
+[2022-11-24 20:36:43,613] [INFO ] [execute_scenario_section      ] ### iteration 1/1 step='Testing benchmark' cmd='./test_benchmark.sh \'rustc_wrapper="none"\' \'test_cmd="test_workspace_sequential"\''
+[2022-11-24 20:36:43,613] [INFO ] [exec_cmd                      ] cmd:'./clean.sh'
+[2022-11-24 20:36:44,910] [INFO ] [exec_cmd                      ] cmd:'./test_benchmark.sh 'rustc_wrapper="none"' 'test_cmd="test_workspace_sequential"''
+[2022-11-24 20:39:18,257] [INFO ] [exec_cmd                      ] cmd:'./test_benchmark.sh 'rustc_wrapper="none"' 'test_cmd="test_workspace_sequential"'' duration:153.347s
+[2022-11-24 20:39:18,257] [INFO ] [execute_scenario_section      ] ### iteration 1/1 step='Testing benchmark' cmd='./test_benchmark.sh \'rustc_wrapper="none"\' \'test_cmd="test_workspace_all_in_one"\''
+[2022-11-24 20:39:18,257] [INFO ] [exec_cmd                      ] cmd:'./clean.sh'
+[2022-11-24 20:39:19,463] [INFO ] [exec_cmd                      ] cmd:'./test_benchmark.sh 'rustc_wrapper="none"' 'test_cmd="test_workspace_all_in_one"''
+[2022-11-24 20:41:58,029] [INFO ] [exec_cmd                      ] cmd:'./test_benchmark.sh 'rustc_wrapper="none"' 'test_cmd="test_workspace_all_in_one"'' duration:158.566s
+[2022-11-24 20:41:58,029] [INFO ] [execute_scenario_section      ] ### iteration 1/1 step='Testing benchmark' cmd='./test_benchmark.sh \'rustc_wrapper="sccache"\' \'test_cmd="test_workspace_no"\''
+[2022-11-24 20:41:58,029] [INFO ] [exec_cmd                      ] cmd:'./clean.sh'
+[2022-11-24 20:41:59,208] [INFO ] [exec_cmd                      ] cmd:'./test_benchmark.sh 'rustc_wrapper="sccache"' 'test_cmd="test_workspace_no"''
+[2022-11-24 20:44:14,572] [INFO ] [exec_cmd                      ] cmd:'./test_benchmark.sh 'rustc_wrapper="sccache"' 'test_cmd="test_workspace_no"'' duration:135.364s
+[2022-11-24 20:44:14,572] [INFO ] [execute_scenario_section      ] ### iteration 1/1 step='Testing benchmark' cmd='./test_benchmark.sh \'rustc_wrapper="sccache"\' \'test_cmd="test_workspace_sequential"\''
+[2022-11-24 20:44:14,572] [INFO ] [exec_cmd                      ] cmd:'./clean.sh'
+[2022-11-24 20:44:15,794] [INFO ] [exec_cmd                      ] cmd:'./test_benchmark.sh 'rustc_wrapper="sccache"' 'test_cmd="test_workspace_sequential"''
+[2022-11-24 20:46:42,413] [INFO ] [exec_cmd                      ] cmd:'./test_benchmark.sh 'rustc_wrapper="sccache"' 'test_cmd="test_workspace_sequential"'' duration:146.619s
+[2022-11-24 20:46:42,413] [INFO ] [execute_scenario_section      ] ### iteration 1/1 step='Testing benchmark' cmd='./test_benchmark.sh \'rustc_wrapper="sccache"\' \'test_cmd="test_workspace_all_in_one"\''
+[2022-11-24 20:46:42,413] [INFO ] [exec_cmd                      ] cmd:'./clean.sh'
+[2022-11-24 20:46:43,726] [INFO ] [exec_cmd                      ] cmd:'./test_benchmark.sh 'rustc_wrapper="sccache"' 'test_cmd="test_workspace_all_in_one"''
+[2022-11-24 20:48:58,157] [INFO ] [exec_cmd                      ] cmd:'./test_benchmark.sh 'rustc_wrapper="sccache"' 'test_cmd="test_workspace_all_in_one"'' duration:134.431s
