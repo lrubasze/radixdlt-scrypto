@@ -15,6 +15,7 @@
 # variants rustc_wrapper=none,sccache
 
 # name=Building system packages and examples...
+# options clean_before=true
 ./test_packages.sh
 
 # name=Running simulator...
@@ -39,7 +40,7 @@
 
 # name=Testing with std.. (no-run)
 # options clean_before=true
-./test_with_std.sh cargo_args=--no-run
+./test_with_std.sh cmd_args=--no-run
 
 # name=Testing with std.. (run already built)
 ./test_with_std.sh
