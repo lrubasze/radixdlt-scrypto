@@ -37,7 +37,9 @@ jobs:
         sudo bash -c " \
           echo core > /proc/sys/kernel/core_pattern; \
           pushd /sys/devices/system/cpu; \
-          echo performance | tee cpu*/cpufreq/scaling_governor >/dev/null"
+          ls cpu*/cpufreq/scaling_governor > /dev/null \
+            && echo performance | tee cpu*/cpufreq/scaling_governor > /dev/null \
+            || true"
     - name: Build AFL
       working-directory: fuzz-tests
       run: |
