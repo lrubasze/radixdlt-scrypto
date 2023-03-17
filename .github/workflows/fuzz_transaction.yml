@@ -70,9 +70,16 @@ jobs:
     - name: Watch AFL
       working-directory: fuzz-tests
       run: |
+        screen -ls afl
+
         while screen -ls afl >/dev/null 2>&1 ; do
-          cargo afl whatsup -d afl/transaction
-          sleep
+          ls -la
+          pwd
+          # afl folder structure created with some delay after fuzz startup
+          if [ -d afl/transaction ] ; then
+            cargo afl whatsup -d afl/transaction
+          fi
+          sleep 5
         done
 
     - name: Generate summary
@@ -82,7 +89,7 @@ jobs:
         "# Repo:\n \
          revision: $(git rev-parse --short HEAD)\n \
          # Stats:\n \
-         $(cargo afl whatsup -d afl/transaction" > afl/summary
+         $(cargo afl whatsup -d afl/transaction)" > afl/summary
         cat afl/summary >> $GITHUB_STEP_SUMMARY
         find afl -type f ! -path "*/queue/*"  | tar -cvzf fuzz_transaction.tgz -T -
 
