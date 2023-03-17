@@ -1,0 +1,45 @@
+name: fuzz-transaction
+
+on:
+  workflow_dispatch:
+
+env:
+  CARGO_TERM_COLOR: always
+
+jobs:
+  tests:
+    name: Fuzz transaction
+    runs-on: k8s-linux-runner
+    steps:
+    - uses: actions/checkout@v2
+    - uses: actions-rs/toolchain@v1
+      with:
+        toolchain: stable
+    - name: Add wasm target (scrypto-examples)
+      run: rustup target add wasm32-unknown-unknown
+    - name: Add wasm target (nightly) (scrypto-examples)
+      run: rustup +nightly target add wasm32-unknown-unknown
+    - uses: bmwill/rust-cache@v1
+      with:
+        path: ~/.cargo/registry/src/**/librocksdb-sys-*
+        working-directory: simulator
+    - name: Install Scrypto toolchain
+      run: cargo install --path ./simulator
+
+    - name: Setup AFL
+      run: |
+        ./install_afl.sh && \
+        echo core > /proc/sys/kernel/core_pattern" && \
+        bash -c "cd /sys/devices/system/cpu ; echo performance | tee cpu*/cpufreq/scaling_governor >/dev/null"
+      working-directory: fuzz-tests
+    - name: Build AFL
+      run: |
+        ./fuzz.sh afl build
+    - name: Generate input for AFL
+      run: |
+        ./fuzz.sh generate-input min
+    - name: Run AFL
+      run: |
+        ./fuzz.sh run afl 120
+
+
