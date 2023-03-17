@@ -15,6 +15,8 @@ jobs:
     - uses: actions-rs/toolchain@v1
       with:
         toolchain: stable
+    - name: Install nextest
+      uses: taiki-e/install-action@nextest
     - name: Add wasm target
       run: rustup target add wasm32-unknown-unknown
     - name: Add wasm target (nightly)
@@ -37,8 +39,8 @@ jobs:
         sudo bash -c " \
           echo core > /proc/sys/kernel/core_pattern; \
           pushd /sys/devices/system/cpu; \
-          ls cpu*/cpufreq/scaling_governor > /dev/null \
-            && echo performance | tee cpu*/cpufreq/scaling_governor > /dev/null \
+          ls cpu*/cpufreq/scaling_governor >/dev/null 2>&1\
+            && echo performance | tee cpu*/cpufreq/scaling_governor >/dev/null \
             || true"
     - name: Build AFL
       working-directory: fuzz-tests
