@@ -28,23 +28,16 @@ jobs:
     - uses: actions-rs/toolchain@v1
       with:
         toolchain: stable
+
     - name: Install nextest
       uses: taiki-e/install-action@nextest
+
     - name: Add wasm target
       run: rustup target add wasm32-unknown-unknown
+
     - name: Add wasm target (nightly)
       run: rustup +nightly target add wasm32-unknown-unknown
-#    - uses: bmwill/rust-cache@v1
-#      with:
-#        path: ~/.cargo/registry/src/**/librocksdb-sys-*
-#        working-directory: simulator
-#    - name: Install Scrypto toolchain
-#      run: cargo install --path ./simulator
-    - name: Check OS
-      run: |
-        which screen || echo "no screen"
-        which xargs || echo "no xargs"
-        which parallel && parallel --version || echo "no parallel"
+
     - name: Setup AFL
       working-directory: fuzz-tests
       run: |
@@ -55,25 +48,47 @@ jobs:
           ls cpu*/cpufreq/scaling_governor >/dev/null 2>&1\
             && echo performance | tee cpu*/cpufreq/scaling_governor >/dev/null \
             || true"
+
     - name: Build AFL
       working-directory: fuzz-tests
       run: |
         ./fuzz.sh afl build
+
     - name: Generate input for AFL
       working-directory: fuzz-tests
       run: |
         ./fuzz.sh generate-input ${{ github.event.inputs.fuzz_input_mode }}
+
     - name: Run AFL
       working-directory: fuzz-tests
       run: |
-        ./fuzz.sh afl run ${{ github.event.inputs.duration }}
+        screen -dmS afl_main bash -c "cargo afl fuzz -i fuzz_input/transaction -M main -T transaction -V ${{ github.inputs.duration }} -o afl/transaction target-afl/release/transaction"
+        screen -dmS afl_slave1 bash -c "cargo afl fuzz -i fuzz_input/transaction -S slave1 -T transaction -V ${{ github.inputs.duration }} -o afl/transaction target-afl/release/transaction"
+        screen -dmS afl_slave2 bash -c "cargo afl fuzz -i fuzz_input/transaction -S slave2 -T transaction -V ${{ github.inputs.duration }} -o afl/transaction target-afl/release/transaction"
+        screen -dmS afl_slave3 bash -c "cargo afl fuzz -i fuzz_input/transaction -S slave3 -T transaction -V ${{ github.inputs.duration }} -o afl/transaction target-afl/release/transaction"
+
+    - name: Watch AFL
+      working-directory: fuzz-tests
+      run: |
+        while screen -ls afl >/dev/null 2>&1 ; do
+          cargo afl whatsup -d afl/transaction
+          sleep
+        done
+
     - name: Generate summary
+      working-directory: fuzz-tests
       run: |
         echo -e \
-        "#Fuzz summary:\n \
-         ## Repo revision:\n \
-         GITHUB_BASE_REF=$GITHUB_BASE_REF\n \
-         GITHUB_HEAD_REF=$GITHUB_HEAD_REF\n \
-         GITHUB_REF=$GITHUB_REF" >> $GITHUB_STEP_SUMMARY
+        "# Repo:\n \
+         revision: $(git rev-parse --short HEAD)\n \
+         # Stats:\n \
+         $(cargo afl whatsup -d afl/transaction" > afl/summary
+        cat afl/summary >> $GITHUB_STEP_SUMMARY
+        find afl -type f ! -path "*/queue/*"  | tar -cvzf fuzz_transaction.tgz -T -
 
-
+    - name: Upload artifacts
+      uses: actions/upload-artifact@v3
+      with:
+        name: fuzz_transaction.tgz
+        path: |
+          fuzz_transaction.tgz
