@@ -2,6 +2,19 @@ name: Fuzzing
 
 on:
   workflow_dispatch:
+    inputs:
+      duration:
+        description: 'Fuzzing duration [s]'
+        required: true
+        default: 3600
+      fuzz_input_mode:
+        type: choice
+        description: 'Fuzz input data generation mode'
+        required: true
+        options:
+          - raw
+          - unique
+          - minimize
 
 env:
   CARGO_TERM_COLOR: always
@@ -49,10 +62,18 @@ jobs:
     - name: Generate input for AFL
       working-directory: fuzz-tests
       run: |
-        ./fuzz.sh generate-input min
+        ./fuzz.sh generate-input ${{ github.event.inputs.fuzz_input_mode }}
     - name: Run AFL
       working-directory: fuzz-tests
       run: |
-        ./fuzz.sh run afl 120
+        ./fuzz.sh afl run ${{ github.event.inputs.duration }}
+    - name: Generate summary
+      run: |
+        echo -e \
+        "#Fuzz summary:\n \
+         ## Repo revision:\n \
+         GITHUB_BASE_REF=$GITHUB_BASE_REF\n \
+         GITHUB_HEAD_REF=$GITHUB_HEAD_REF\n \
+         GITHUB_REF=$GITHUB_REF" >> $GITHUB_STEP_SUMMARY
 
 
