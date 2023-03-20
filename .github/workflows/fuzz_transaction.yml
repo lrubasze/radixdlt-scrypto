@@ -94,14 +94,17 @@ jobs:
     - name: Generate summary
       working-directory: fuzz-tests
       run: |
-        set -x
+        COMMIT=$(git rev-parse --short HEAD)
         echo -e \
-        "# Repo:\n \
-         revision: $(git rev-parse --short HEAD)\n \
-         # Stats:\n \
-         ``` \
+        "## Repo:\n \
+        revision: [${{ github.repository }} - $COMMIT](${{ github.repositoryUrl }}/commit/$COMMIT)\n \
+        sha: ${{ github.sha }} \
+        path: ${{ github.path }} \
+        workspace: ${{ github.workspace }} \
+        ## Status:\n \
+        \n\`\`\`\n \
          $(cargo afl whatsup -d afl/transaction) \
-         ``` " > afl/summary
+        \n\`\`\`\n" > afl/summary
         cat afl/summary >> $GITHUB_STEP_SUMMARY
         find afl -type f ! -path "*/queue/*" | tee list
         tar -cvzf fuzz_transaction.tgz -T list
