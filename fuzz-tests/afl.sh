@@ -8,6 +8,7 @@ DFLT_CPUS=1
 DFLT_INTERVAL=60
 # At the moment this is the only supported test
 DFLT_TARGET=transaction
+DFLT_AFL_TIMEOUT=1000
 
 function usage() {
     echo "$0 [COMMAND] [COMMAND-ARGS]"
@@ -33,6 +34,7 @@ function get_cpus() {
 }
 
 target=$DFLT_TARGET
+timeout=$DFLT_AFL_TIMEOUT
 cmd=${1:-watch}
 shift
 
@@ -57,19 +59,19 @@ if [ $cmd = "run" ] ; then
         fi
         # TODO: use different fuzzing variants per instance
         screen -dmS afl_$name \
-            bash -c "{ ./fuzz.sh afl run -V $duration $fuzzer -T transaction >afl/$name.log 2>afl/$name.err ; echo \$? > afl/$name.status; }"
+            bash -c "{ ./fuzz.sh afl run -V $duration $fuzzer -T $target -t $timeout >afl/$name.log 2>afl/$name.err ; echo \$? > afl/$name.status; }"
     done
 elif [ $cmd = "watch" ] ; then
     interval=${1:-$DFLT_INTERVAL}
     while ! screen -ls afl | grep "No Sockets found" ; do
+        sleep $interval
         # afl folder structure created with some delay after fuzz startup
         if [ -d afl/$target ] ; then
             cargo afl whatsup -d afl/$target
         fi
-        sleep $interval
     done
     echo "AFL instances status (0 means 'ok'):"
-    grep -Hv "*" afl/*.status
+    find afl -name "*.status" | xargs grep -H -v "*"
 else
     echo "Command '$cmd' not supported"
     exit 1
