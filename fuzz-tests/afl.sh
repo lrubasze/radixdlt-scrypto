@@ -12,11 +12,14 @@ DFLT_AFL_TIMEOUT=1000
 
 function usage() {
     echo "$0 [COMMAND] [COMMAND-ARGS]"
-    echo "Commands"
-    echo "    run   - Run given number of AFL instances (default: $DFLT_CPUS) in screen sessions"
-    echo "            Once can specify:"
-    echo "            all      - to run as many instances as CPU cores available"
-    echo "            <number> - to run <number> of instances"
+    echo "Commands:"
+    echo "    run <duration> <instances> [timeout]"
+    echo "            Run given number of AFL instances (default: $DFLT_CPUS) in screen sessions"
+    echo "            for a given number of seconds."
+    echo "            For 'instances' one can specify"
+    echo "              all      - to run as many instances as CPU cores available"
+    echo "              <number> - to run <number> of instances"
+    echo "            'timeout' is an AFL timeout in ms"
     echo "    watch - Monitor AFL instances until they are finished."
     echo "            One can specify interval (default: $DFLT_INTERVAL) to output the status"
 }
@@ -34,13 +37,13 @@ function get_cpus() {
 }
 
 target=$DFLT_TARGET
-timeout=$DFLT_AFL_TIMEOUT
 cmd=${1:-watch}
 shift
 
 if [ $cmd = "run" ] ; then
     duration=${1}
     cpus=${2:-1}
+    timeout=${3:-$DFLT_AFL_TIMEOUT}
     if [ $cpus = "all" ] ; then
         cpus=$(get_cpus)
         echo "CPU cores available: $cpus"
