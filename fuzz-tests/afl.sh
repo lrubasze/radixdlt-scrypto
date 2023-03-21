@@ -49,6 +49,7 @@ if [ $cmd = "run" ] ; then
         echo "CPU cores available: $cpus"
     fi
     echo "Running $cpus AFL instances"
+    mkdir -p afl
 
     for (( i=0; i<$cpus; i++ )) ; do
         if [ $i -eq 0 ] ; then
