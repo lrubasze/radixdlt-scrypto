@@ -57,7 +57,7 @@ if [ $cmd = "run" ] ; then
         fi
         # TODO: use different fuzzing variants per instance
         screen -dmS afl_$name \
-            bash -c "{ ./fuzz.sh afl run -V $duration $fuzzer -T transaction ; echo \$? > afl/$name.status; }"
+            bash -c "{ ./fuzz.sh afl run -V $duration $fuzzer -T transaction >afl/$name.log 2>afl/$name.err ; echo \$? > afl/$name.status; }"
     done
 elif [ $cmd = "watch" ] ; then
     interval=${1:-$DFLT_INTERVAL}
@@ -69,7 +69,7 @@ elif [ $cmd = "watch" ] ; then
         sleep $interval
     done
     echo "AFL instances status (0 means 'ok'):"
-    grep -v "*" afl/*.status
+    grep -Hv "*" afl/*.status
 else
     echo "Command '$cmd' not supported"
     exit 1
