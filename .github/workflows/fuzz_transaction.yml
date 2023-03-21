@@ -42,12 +42,7 @@ jobs:
       working-directory: fuzz-tests
       run: |
         ./install_afl.sh
-        sudo bash -c " \
-          echo core > /proc/sys/kernel/core_pattern; \
-          pushd /sys/devices/system/cpu; \
-          ls cpu*/cpufreq/scaling_governor >/dev/null 2>&1\
-            && echo performance | tee cpu*/cpufreq/scaling_governor >/dev/null \
-            || true"
+        ./fuzz.sh afl machine-init
 
     - name: Build AFL
       working-directory: fuzz-tests
@@ -62,34 +57,12 @@ jobs:
     - name: Run AFL
       working-directory: fuzz-tests
       run: |
-        CPUS=$(cat /proc/cpuinfo  | grep processor | wc -l)
-        echo "CPU cores available: $CPUS"
-        screen -dmS afl_main \
-          bash -c '{ ./fuzz.sh afl run -V ${{ github.event.inputs.duration }} -M main -T transaction ; echo $? > afl_main.status; }'
-        screen -dmS afl_slave1 \
-          bash -c '{ ./fuzz.sh afl run -V ${{ github.event.inputs.duration }} -M slave1 -T transaction ; echo $? > afl_slave1.status; }'
-
-
-        #        "cargo afl fuzz -i fuzz_input/transaction -M main -T transaction -V ${{ github.inputs.duration }} -o afl/transaction target-afl/release/transaction"
-        #        screen -dmS afl_slave1 bash -c "cargo afl fuzz -i fuzz_input/transaction -S slave1 -T transaction -V ${{ github.inputs.duration }} -o afl/transaction target-afl/release/transaction"
-        #        screen -dmS afl_slave2 bash -c "cargo afl fuzz -i fuzz_input/transaction -S slave2 -T transaction -V ${{ github.inputs.duration }} -o afl/transaction target-afl/release/transaction"
-        #        screen -dmS afl_slave3 bash -c "cargo afl fuzz -i fuzz_input/transaction -S slave3 -T transaction -V ${{ github.inputs.duration }} -o afl/transaction target-afl/release/transaction"
+        ./afl.sh run all
 
     - name: Watch AFL
       working-directory: fuzz-tests
       run: |
-        #screen -ls afl
-
-        while screen -ls afl >/dev/null 2>&1 ; do
-          ls -la
-          pwd
-          # afl folder structure created with some delay after fuzz startup
-          if [ -d afl/transaction ] ; then
-            cargo afl whatsup -d afl/transaction
-          fi
-          sleep 5
-        done
-        grep -v "0" afl*.status && echo error occured || echo no error
+        ./afl.sh watch 60
 
     - name: Generate summary
       working-directory: fuzz-tests
@@ -97,10 +70,7 @@ jobs:
         COMMIT=$(git rev-parse --short HEAD)
         echo -e \
         "## Repo:\n \
-        revision: [${{ github.repository }} - $COMMIT](${{ github.repositoryUrl }}/commit/$COMMIT)\n \
-        sha: ${{ github.sha }} \
-        path: ${{ github.path }} \
-        workspace: ${{ github.workspace }} \
+        revision: [${{ github.repository }} - $COMMIT](${{ github.server_url }}/${{ github.repository }}/commit/$COMMIT)\n \
         ## Status:\n \
         \n\`\`\`\n \
          $(cargo afl whatsup -d afl/transaction) \
@@ -108,10 +78,6 @@ jobs:
         cat afl/summary >> $GITHUB_STEP_SUMMARY
         find afl -type f ! -path "*/queue/*" | tee list
         tar -cvzf fuzz_transaction.tgz -T list
-        ls -la
-        ls -la fuzz_transaction.tgz
-        pwd
-        #find afl -type f ! -path "*/queue/*"  | tar -cvzf fuzz_transaction.tgz -T -
 
     - name: Upload artifacts
       uses: actions/upload-artifact@v3
