@@ -7,6 +7,10 @@ on:
         description: 'Fuzzing duration [s]'
         required: true
         default: 3600
+      timeout:
+        description: 'AFL timeout [ms]'
+        required: true
+        default: 1000
       fuzz_input_mode:
         type: choice
         description: 'Fuzz input data generation mode'
@@ -57,7 +61,7 @@ jobs:
     - name: Run AFL
       working-directory: fuzz-tests
       run: |
-        ./afl.sh run all
+        ./afl.sh run ${{ github.event.inputs.duration }} all ${{ github.event.inputs.timeout }}
 
     - name: Watch AFL
       working-directory: fuzz-tests
