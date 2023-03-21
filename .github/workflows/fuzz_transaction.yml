@@ -58,7 +58,7 @@ jobs:
       run: |
         ./fuzz.sh generate-input ${{ github.event.inputs.fuzz_input_mode }}
 
-    - name: Run AFL
+    - name: Start AFL
       working-directory: fuzz-tests
       run: |
         ./afl.sh run ${{ github.event.inputs.duration }} all ${{ github.event.inputs.timeout }}
