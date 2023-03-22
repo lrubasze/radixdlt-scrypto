@@ -1,0 +1,8 @@
+name: Stub
+
+on:
+  workflow_dispatch:
+
+jobs:
+  transaction:
+    name: Stub jobs
