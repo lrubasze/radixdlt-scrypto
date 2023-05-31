@@ -22,9 +22,9 @@ mod common;
 #[cfg(feature = "libfuzzer-sys")]
 fuzz_target!(|data: &[u8]| {
     unsafe {
-        static mut FUZZER: Lazy<Fuzzer> = Lazy::new(|| {
+        static mut FUZZER: Lazy<TxFuzzer> = Lazy::new(|| {
             fuzz_tx_init_statics();
-            Fuzzer::new()
+            TxFuzzer::new()
         });
 
         FUZZER.reset_runner();
